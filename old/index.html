@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madhur Jain</title>
+<meta name="description" content="Not your neighbourhood computer guy. My original hand-drawn website, circa 2011, restored without WordPress.">
+<link rel="icon" href="images/favicon.ico">
+<style>
+/*
+  Theme Name: Mad — originally a WordPress theme by Madhur Jain (madhurjain.com, 2011).
+  Restored as static HTML; styles kept close to the original.
+*/
+* { margin: 0; padding: 0; box-sizing: content-box; }
+body {
+  color: #333;
+  font-family: "Lucida Grande", Verdana, sans-serif;
+  font-size: 1em;
+  background-color: #fff;
+}
+a { color: #000; text-decoration: none; border-bottom: 1px dotted #333; }
+p { line-height: 140%; margin-bottom: 1em; }
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em; font-weight: normal; color: #333; letter-spacing: -1px;
+  margin-bottom: .5em;
+}
+
+/* Time-capsule note (new) */
+#capsule {
+  font: 12px/1.5 ui-monospace, Menlo, monospace;
+  color: #777; background: #fafaf5; border-bottom: 1px dashed #ddd;
+  padding: 6px 16px;
+}
+#capsule a { color: #555; }
+
+#header { margin: 20px 0 0 40px; position: relative; }
+#logo {
+  background: url(images/madhur_jain.jpg) center top no-repeat;
+  height: 90px; width: 456px; max-width: 100%;
+}
+#bulb {
+  position: absolute; top: 0; left: 500px;
+  width: 68px; height: 86px;
+  background: #fff url(images/bulb.jpg) no-repeat 0 20px;
+}
+#onBulb {
+  width: 68px; height: 86px;
+  background: #fff url(images/bulb.jpg) no-repeat 0 -65px;
+  opacity: 0; transition: opacity .1s;
+}
+#header:has(#logo:hover, #bulb:hover) #onBulb { opacity: 1; transition: opacity .6s; }
+
+ul.navigation { list-style: none; margin: 20px 0 20px 50px; padding-bottom: 9px; }
+ul.navigation li { display: inline-block; margin-right: 10px; }
+ul.navigation a { display: block; border: none; width: 159px; height: 90px; }
+ul.navigation a:focus { outline: none; }
+#about_item    { height: 89px; background: #fff url(images/about.jpg)    no-repeat 0 0; }
+#about_item:hover, #about_item.on       { background-position: -1px -94px; }
+#projects_item { background: #fff url(images/projects.jpg) no-repeat 0 25px; }
+#projects_item:hover, #projects_item.on { background-position: 1px -86px; }
+#random_item   { background: #fff url(images/random.jpg)   no-repeat 0 20px; }
+#random_item:hover, #random_item.on     { background-position: -1px -69px; }
+#contact_item  { background: #fff url(images/contact.jpg)  no-repeat 0 15px; }
+#contact_item:hover, #contact_item.on   { background-position: 0 -69px; }
+
+#container { width: 100%; position: relative; }
+#content { width: 100%; overflow: hidden; overflow: clip; position: relative; padding: 10px 0; }
+#scrolling { width: 400%; display: flex; transition: transform 1s ease-in-out; }
+.panel { width: 21%; padding: 0 2%; }
+
+#post_container {
+  display: none; position: absolute; top: 0; left: 0; right: 0;
+  background: #fff; z-index: 2; margin-top: 2%;
+}
+#post_container.open { display: block; animation: slide .5s ease-out; }
+@keyframes slide { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+#post { padding: 0 8% 4%; }
+#post iframe { max-width: 100%; margin: 10px 0; }
+#close {
+  background: #000; color: #fff; padding: 4px 6px; border: 0;
+  float: right; margin-right: 5px; cursor: pointer; font: inherit;
+}
+
+.posts { margin-top: 10px; }
+a.post {
+  display: inline-block; margin-top: 10px; padding: 5px;
+  background: #ebebeb; color: #000; border: 0;
+}
+a.post:hover { color: #fff; background: #000; }
+.draft, .postdate {
+  font: 11px/1 ui-monospace, Menlo, monospace; color: #999;
+  margin-left: 8px; vertical-align: middle;
+}
+.postdate { display: block; margin: -.25em 0 1.25em; }
+#post .verse { white-space: pre-line; }
+#post img { max-width: 100%; height: auto; }
+
+#footer { margin: 20px 0 0 40px; }
+
+@media (max-width: 720px) {
+  #header { margin: 16px 16px 0; }
+  #bulb { left: auto; right: 0; }
+  #logo { background-size: contain; background-position: left top; height: 60px; width: 75%; }
+  ul.navigation { margin: 16px 0; display: grid; grid-template-columns: repeat(2, 159px); justify-content: center; gap: 4px 8px; }
+  ul.navigation li { margin: 0; }
+  #scrolling { width: 100%; display: block; transform: none !important; }
+  .panel { width: auto; padding: 0 16px; display: none; }
+  .panel.active { display: block; }
+}
+</style>
+</head>
+<body>
+<div id="capsule">📼 You've found a time capsule: my homepage from ~2011, restored. The present-day me lives at <a href="../">madhurjain.com</a>.</div>
+
+<div id="wrapper">
+  <div id="header">
+    <div id="logo" role="img" aria-label="madhur jain — not your neighbourhood computer guy...."></div>
+    <div id="bulb"><div id="onBulb"></div></div>
+    <ul class="navigation">
+      <li><a id="about_item" href="#about" data-panel="0" aria-label="About"></a></li>
+      <li><a id="projects_item" href="#projects" data-panel="1" aria-label="Projects"></a></li>
+      <li><a id="random_item" href="#random" data-panel="2" aria-label="Random"></a></li>
+      <li><a id="contact_item" href="#contact" data-panel="3" aria-label="Contact"></a></li>
+    </ul>
+  </div>
+
+  <div id="container">
+    <div id="post_container"><div id="post"></div></div>
+    <div id="content">
+      <div id="scrolling">
+
+        <div class="panel" data-name="about">
+          <br>
+          <p>I am Madhur Jain, born and brought up in the small town of <a href="https://maps.google.com/maps?q=ratnagiri" target="_blank" rel="noopener">Ratnagiri</a> [MH/India]. And what you see at top is my handwriting. Yeah, as crazy as me. I have been fascinated by technology since I was a child. I like to fiddle around with gadgets, taking things apart, programming, soldering, etc. I am not into any sports though. My dad tried to get me playing cricket when I was a kid, but soon enough I lost my interest. I completed my Bachelors in Electronics Engineering and went ahead to work with <a href="https://www.infosys.com" target="_blank" rel="noopener">Infosys</a>. My curiosity in electronics and a desire to work along with a start-up landed me at an embedded systems start-up <a target="_blank" rel="noopener" href="http://entesla.com">eNTesla</a> where I met best of the people and had some life learnings. I love to experiment and that's what I've been doing all along.</p>
+        </div>
+
+        <div class="panel" data-name="projects">
+          <div class="posts">
+            <a class="post" href="#illuminate-my-entry-for-the-555-contest">Illuminate - My entry for the 555 contest</a><br>
+            <a class="post" href="#diy-direct-to-garment-printer">DIY Direct To Garment Printer</a><br>
+            <a class="post" href="#interactive-display-my-final-year-project">Interactive Display - My Final Year Project</a><br>
+          </div>
+        </div>
+
+        <div class="panel" data-name="random">
+          <div class="posts">
+            <a class="post" href="#infosys-the-golden-fence">Infosys - The Golden Fence</a><span class="draft">draft</span><br>
+            <a class="post" href="#the-entesla-experience">The eNTesla Experience</a><span class="draft">draft</span><br>
+            <a class="post" href="#a-mad-jack">A Mad Jack</a><span class="draft">draft</span><br>
+            <a class="post" href="#whats-with-the-crappy-looking-design">What's with the crappy looking design ?</a><br>
+          </div>
+        </div>
+
+        <div class="panel" data-name="contact">
+          <p>Say Hello !</p>
+          <p><a href="https://twitter.com/madhurjain" target="_blank" rel="noopener">@madhurjain</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"><br></div>
+</div>
+
+<!-- Posts, as published on madhurjain.com (2013 export). Text left exactly as written. -->
+<template id="interactive-display-my-final-year-project">
+  <h1>Interactive Display - My Final Year Project</h1>
+  <span class="postdate">2008</span>
+  <p>This is my final year engineering project. A multi-touch table !<br>
+  Sorry for the lengthy video and the average video quality.</p>
+  <iframe src="https://player.vimeo.com/video/1017538?title=0&amp;byline=0&amp;portrait=0" width="398" height="326" frameborder="0" allowfullscreen></iframe>
+  <p>More pics and details will be put up soon.</p>
+</template>
+
+<template id="whats-with-the-crappy-looking-design">
+  <h1>What's with the crappy looking design ?</h1>
+  <span class="postdate">~2011</span>
+  <p>I wanted to create something original, so i took the pen tablet I'd gifted to my dad and started scribbling with it, such a pathetic artist that i am, i ended up with this! Nevertheless, i thought i should put it up. So i went ahead creating a custom wordpress theme (yes the backend is wordpress) and here's what it looks like. It might not render properly and lot of elements on the website might break, but hang on, i am still working on it..</p>
+  <p style="color:#999"><small>2026 update: it is no longer WordPress. Still working on it.</small></p>
+</template>
+
+<template id="diy-direct-to-garment-printer">
+  <h1>DIY Direct To Garment Printer</h1>
+  <span class="postdate">~2010</span>
+  <p>7 days, 3 printers and lots of woodwork !<br>
+  This is the DIY Direct to Garment printer i built along with my dad last year.</p>
+  <iframe src="https://player.vimeo.com/video/12826549?title=0&amp;byline=0&amp;portrait=0" width="398" height="299" frameborder="0" allowfullscreen></iframe>
+  <p>Will put up the detailed pics soon.</p>
+</template>
+
+<template id="illuminate-my-entry-for-the-555-contest">
+  <h1>Illuminate - My entry for the 555 contest</h1>
+  <span class="postdate">Mar 2011</span>
+  <p>I had these wall hangings at my home, which had a transparent window at the center. I wanted to lit up these hangings with some back-light. I had been closely following the discussion on twitter, between <a href="https://twitter.com/jeriellsworth" target="_blank" rel="noopener">Jeri</a> and <a href="https://twitter.com/Chris_Gammell" target="_blank" rel="noopener">Chris</a> and the <a href="https://twitter.com/search?q=555contest" target="_blank" rel="noopener">555 contest</a> was announced ! I started thinking of a project to work on and then i remembered these wall hangings. I thought, why not make it interactive, instead of just having a static back-light, I'd make the light pulse as someone passes by the staircase. And this is exactly what i did!</p>
+  <iframe src="https://player.vimeo.com/video/116242785" width="500" height="367" frameborder="0" allowfullscreen></iframe>
+  <p>UPDATE : I won a door prize for my entry :D. A <a href="http://www.droids.it/cmsvb4/content.php?224-990.020-MuIn-USB-Datasheet-EN" target="_blank" rel="noopener">cute little PIC Development</a> board from droids.it.</p>
+</template>
+
+<!-- Drafts that never got published on madhurjain.com, released as-is in 2026. -->
+<template id="the-entesla-experience">
+  <h1>The eNTesla Experience</h1>
+  <span class="postdate">unpublished draft · Dec 2013</span>
+  <p>After working on FreeMyCall.com for around 8 months and realizing the business model in itself was flawed, we gradually moved on. Then came again the <em>what next?</em> part. Amidst of this, I met Neeraj and my college mate Yash. They had started with an embedded systems start-up a year back. Being an electronics engineer I always wanted some hands-on industry experience in electronics. So, I wrote them an email showing my interest to work with eNTesla. They gladly accepted the offer. Soon, I was at Mumbai, working with them!</p>
+  <p>Initially, I dabbled around with various things, partly hardware, mostly still software trying to get a hang of things. Gradually, I started designing small schematics / layouts using Eagle. I wrote a couple of software utilities to communicate with the hardware over RS232, Ethernet. Eventually, I was put on a real embedded systems project which involved building a medical diagnostics instrument called Audiometer from scratch. I spent next 8 months building the it. Work was pretty exciting, at times daunting, troubleshooting the issues with background noise and other hardware bugs. It involved everything from designing the schematic, layout, soldering the components on the test PCB, writing the firmware and the communication software utility.</p>
+  <p><a href="images/first_pcb.jpg" target="_blank" style="border:0"><img alt="First Production PCB" src="images/first_pcb.jpg" width="225" height="300"></a></p>
+  <p>As much I enjoyed working at eNTesla and learning new things, there was no life apart from it. Food problems, busy streets and pollution dawned on me and I finally decided to move back to my hometown. I still remember the advice Neeraj gave me - <em>Do what you are good at, not what you like to do</em>.<br>
+  Electronics is what I liked doing, but wasn't really good at. Hardware is very exciting since the things you build are tangible. But, I must admit, <a href="https://danluu.com/hardware-unforgiving/" target="_blank" rel="noopener">hardware development is hard</a>.</p>
+</template>
+
+<template id="infosys-the-golden-fence">
+  <h1>Infosys - The Golden Fence</h1>
+  <span class="postdate">unpublished draft · Dec 2013</span>
+  <p><b>The Good Part</b><br>
+  - Great infrastructure and facilities.<br>
+  - </p>
+  <p><b>The <em>Not So Good</em> Part</b><br>
+  Not so good management.</p>
+</template>
+
+<template id="a-mad-jack">
+  <h1>A Mad Jack</h1>
+  <span class="postdate">unpublished draft · Feb 6, 2013</span>
+  <p>A few mistakes I made so far since I started with MadJack :)</p>
+  <p>- Didn't ask for any advance amount because I had just started up<br>
+  - Didn't ask for any advance amount because it was a neighbor<br>
+  - Quoted too less of a amount, did a ton of work in exchange, because didn't want to disappoint asking for money for every small thing<br>
+  - Wasted time on things not in scope of MadJack (Buying 10 copies of AntiVirus just because a friend told, etc)</p>
+</template>
+
+<script>
+  const panels = ['about', 'projects', 'random', 'contact'];
+  const scrolling = document.getElementById('scrolling');
+  const postBox = document.getElementById('post_container');
+  const post = document.getElementById('post');
+
+  function showPanel(i) {
+    scrolling.style.transform = `translateX(-${i * 25}%)`;
+    document.querySelectorAll('.panel').forEach((p, j) => p.classList.toggle('active', j === i));
+    document.querySelectorAll('.navigation a').forEach((a, j) => a.classList.toggle('on', j === i));
+  }
+
+  function openPost(slug) {
+    const tpl = document.getElementById(slug);
+    if (!tpl || tpl.tagName !== 'TEMPLATE') return false;
+    post.innerHTML = '<button id="close" type="button" aria-label="Close">X</button>';
+    post.appendChild(tpl.content.cloneNode(true));
+    post.querySelector('#close').onclick = () => { location.hash = homeOf(slug); };
+    postBox.classList.add('open');
+    window.scrollTo({ top: postBox.offsetTop, behavior: 'smooth' });
+    return true;
+  }
+
+  function route() {
+    const hash = location.hash.slice(1);
+    postBox.classList.remove('open');
+    if (panels.includes(hash)) return showPanel(panels.indexOf(hash));
+    if (openPost(hash)) return showPanel(panels.indexOf(homeOf(hash)));
+    showPanel(0);
+  }
+
+  function homeOf(slug) {
+    return document.querySelector(`a.post[href="#${slug}"]`).closest('.panel').dataset.name;
+  }
+
+  window.addEventListener('hashchange', route);
+  route();
+</script>
+</body>
+</html>

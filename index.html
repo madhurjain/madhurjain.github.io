@@ -1,78 +1,316 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-    <title>Madhur Jain - Full Stack Developer</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/narrow.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-lg-12">        
-          <a class="btn btn-default" href="https://github.com/madhurjain"><span class="glyphicon glyphicon-home"></span>&nbsp;GitHub</a>
-          <a class="btn btn-default" href="http://madhur.me"><span class="glyphicon glyphicon-link"></span>&nbsp;Website</a>
-          <a class="btn btn-default" href="http://madhur.me/Madhur_CV_2015.pdf"><span class="glyphicon glyphicon-save"></span>&nbsp;Latest CV</a>
-        </div>        
-      </div>
-      <div id="repos" class="row"></div>
-
-      <footer class="footer">
-        <p></p>
-      </footer>
-
-    </div> <!-- /container -->
-    <script>
-      // code credits
-      // https://github.com/cheeaun/cheeaun.github.com/blob/master/index.html
-      var repos = document.getElementById('repos'), html = '';
-      load = function(data) {
-        if (!data || !data.data || !data.data.length) return;
-        var repositories = data.data, html = '';
-        repositories.sort(function(a, b) {
-          var aFork = a.fork, bFork = b.fork;
-          if (aFork && !bFork) return 1;
-          if (!aFork && bFork) return -1;
-          return new Date(b.pushed_at) - new Date(a.pushed_at);
-        });
-        for (var i=0; i<repositories.length; i++) {
-          var repo = repositories[i];
-          if(repo.fork) { continue; }
-          html += '<div class="col-lg-6">' +
-            '<div class="panel panel-default">' +
-              '<div class="panel-body">' +
-                '<a href="' + repo.html_url + '">' + repo.name + '</a>' +
-              '</div>' +
-            '</div>' +
-          '</div>';
-        }
-        repos.innerHTML = html;
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Madhur Jain</title>
+  <meta name="description" content="Engineer by day, builder by night. Building where software meets the physical world.">
+  <meta property="og:title" content="Madhur Jain">
+  <meta property="og:description" content="Engineer by day, builder by night. Building where software meets the physical world.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #1c1b19;
+      --muted: #6b675f;
+      --line: #e8e8e6;
+      --accent: #d9480f;
+      --accent-soft: #fff0e8;
+      --chip: #f4f4f3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #121211;
+        --surface: #1a1a18;
+        --text: #ecebe7;
+        --muted: #9a968d;
+        --line: #2c2b28;
+        --accent: #ff8a4c;
+        --accent-soft: #2a1a12;
+        --chip: #232320;
       }
-    </script>
-    <script src="https://api.github.com/users/madhurjain/repos?callback=load&type=all"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    }
+    :root[data-theme="dark"] {
+      --bg: #121211;
+      --surface: #1a1a18;
+      --text: #ecebe7;
+      --muted: #9a968d;
+      --line: #2c2b28;
+      --accent: #ff8a4c;
+      --accent-soft: #2a1a12;
+      --chip: #232320;
+    }
 
-      ga('create', 'UA-58125540-1', 'auto');
-      ga('send', 'pageview');
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+    }
+    a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
 
-    </script>
-  </body>
+    main { max-width: 760px; margin: 0 auto; padding: 72px 16px 48px; }
+    section { margin-top: 72px; }
+    h2 {
+      font: 500 13px/1 "JetBrains Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+    h2::before { content: "// "; color: var(--accent); }
+
+    /* Hero */
+    .hero { display: flex; gap: 24px; align-items: center; }
+    .hero img {
+      width: 88px; height: 88px; border-radius: 50%;
+      border: 2px solid var(--line); flex-shrink: 0;
+    }
+    h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.1; margin: 0 0 8px; letter-spacing: -.02em; }
+    .tagline { font-size: 18px; color: var(--muted); margin: 0; }
+    .intro { font-size: 18px; margin: 32px 0 0; max-width: 62ch; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .links a {
+      font: 500 14px/1 "JetBrains Mono", monospace;
+      text-decoration: none;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+    }
+    .links a:hover { border-color: var(--accent); }
+
+
+    /* Experience */
+    .job { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 20px 0; border-top: 1px solid var(--line); }
+    .job:last-child { border-bottom: 1px solid var(--line); }
+    .when { font: 13px/1.7 "JetBrains Mono", monospace; color: var(--muted); }
+    .job h3 { margin: 0; font-size: 17px; }
+    .job h3 span { font-weight: 400; color: var(--muted); }
+    .logo {
+      display: inline-block; width: 20px; height: 20px; margin-right: 8px;
+      vertical-align: -4px; border-radius: 5px; object-fit: contain;
+    }
+    .job p { margin: 6px 0 0; }
+    .aside { color: var(--muted); font-style: italic; }
+
+    /* Projects */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .card {
+      display: block; text-decoration: none;
+      padding: 18px; border: 1px solid var(--line); border-radius: 10px;
+      background: var(--surface);
+      transition: border-color .15s, transform .15s;
+    }
+    a.card:hover { border-color: var(--accent); transform: translateY(-2px); color: inherit; }
+    .card h3 { margin: 0 0 4px; font-size: 16px; display: flex; justify-content: space-between; gap: 8px; }
+    .card h3 small { font: 400 12px/1.8 "JetBrains Mono", monospace; color: var(--muted); white-space: nowrap; }
+    .card p { margin: 0; font-size: 14px; color: var(--muted); }
+    .more { margin-top: 16px; font-size: 14px; color: var(--muted); }
+    .lede { margin: -8px 0 20px; color: var(--muted); }
+    .quest-card { display: flex; flex-direction: column; gap: 6px; }
+    .quest-card h3 { margin: 0; }
+    .quest-card p { flex: 1; margin: 0; }
+    .exploring-now { margin-top: 24px; grid-template-columns: 1fr; }
+
+    /* Collage */
+    .collage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .tile {
+      position: relative; display: block; overflow: hidden;
+      aspect-ratio: 4 / 3; border-radius: 10px; background: var(--chip);
+      text-decoration: none; color: #fff;
+    }
+    .tile:nth-child(odd) { transform: rotate(-.6deg); }
+    .tile:nth-child(even) { transform: rotate(.6deg); }
+    .tile img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: saturate(.85); transition: transform .3s, filter .3s;
+    }
+    .tile span {
+      position: absolute; inset: auto 0 0 0; padding: 28px 12px 10px;
+      background: linear-gradient(transparent, rgba(0,0,0,.8));
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .tile b { font-size: 14px; }
+    .tile i { font: 11px/1.4 "JetBrains Mono", monospace; font-style: normal; opacity: .85; }
+    .tile:hover { color: #fff; transform: rotate(0) scale(1.02); z-index: 1; }
+    .tile:hover img { transform: scale(1.06); filter: none; }
+    .tile { transition: transform .2s; }
+
+    /* Education */
+    .edu { display: grid; gap: 12px; }
+    .edu div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; }
+    .edu p { margin: 0; }
+
+    footer {
+      margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font: 13px/1.5 "JetBrains Mono", monospace; color: var(--muted);
+    }
+    footer button {
+      font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0;
+      text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      main { padding-top: 48px; }
+      .hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .job, .edu div { grid-template-columns: 1fr; gap: 4px; }
+      .grid { grid-template-columns: 1fr; }
+      .collage { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <div class="hero">
+      <img src="images/avatar.jpg" alt="Madhur Jain" width="88" height="88">
+      <div>
+        <h1>Madhur Jain</h1>
+        <p class="tagline">Engineer by day. Builder by night.</p>
+      </div>
+    </div>
+    <p class="intro">
+      I'm a software engineer at Google, working on YouTube Ads infrastructure. I've worked
+      across the stack (hardware, firmware and software), so if something's slow, I can usually
+      tell you which layer is lying. Lately I've been building where software meets the physical world:
+    </p>
+    <div class="grid exploring-now">
+      <div class="card quest-card">
+        <h3>Code review, but for buildings</h3>
+        <p>Software gets checked automatically on every commit; the electrical drawings for a hospital still get checked by hand, page by page. I'm building AI that reads 100+ electrical drawings, finds every breaker, feeder and transformer, and checks them against the NEC before anything gets built.</p>
+      </div>
+      <div class="card quest-card">
+        <h3>Robots that work on day one</h3>
+        <p>Robots don't have to be perfect to be useful. I'm building low-latency vision and teleoperation so a remote human can step in when a robot gets stuck, and every save teaches it to need less help.</p>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="https://github.com/madhurjain">GitHub</a>
+      <a href="https://www.linkedin.com/in/mformadhur/">LinkedIn</a>
+      <a href="https://vimeo.com/madj">Vimeo</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Where I've been</h2>
+
+    <div class="job">
+      <div class="when">2022 — now</div>
+      <div>
+        <h3><img class="logo" src="images/google-com-logo.png" alt="" width="20" height="20">Google <span>· Ad infrastructure &amp; privacy</span></h3>
+        <p>Building identity, personalization and compliance systems across AdMob and YouTube Ads — $500M+ ARR worth of systems that have to keep regulators, lawyers and advertisers happy at the same time.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2020 — 2022</div>
+      <div>
+        <h3><img class="logo" src="images/aws-com-logo.png" alt="" width="20" height="20">Amazon AWS <span>· IoT &amp; video</span></h3>
+        <p>Designed and built video ingestion for AWS IoT TwinMaker, piping live and recorded camera feeds into digital twins of industrial sites. Launched at <a href="https://youtu.be/fdBKRyhC9Yk?t=835">re:Invent 2021</a>.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2017 — 2020</div>
+      <div>
+        <h3><img class="logo" src="images/sandiskstorage-com-logo.png" alt="" width="20" height="20">SanDisk <span>· SSD firmware &amp; systems</span></h3>
+        <p>Brought up the custom NVMe storage inside the Xbox Series X|S with Microsoft, and squeezed SSD power down so laptops last longer. Replaced a legacy LabVIEW test rig and cut validation from 8 hours to 2.</p>
+        <p class="aside">Those shorter Xbox load screens? You're welcome.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2012 — 2015</div>
+      <div>
+        <h3><img class="logo" src="images/pleximus-com-logo.png" alt="" width="20" height="20">Pleximus <span>· Co-Founder</span></h3>
+        <p>Bootstrapped a 10-person product shop serving clients across three continents. Built an industrial control product that talked to PLCs (0 → $100k ARR), a fleet-tracking SaaS, and a real-time packet filter.</p>
+        <p class="aside">Learned that the hardest protocol is the invoice.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2008 — 2012</div>
+      <div>
+        <h3><img class="logo" src="images/entesla-com-logo.png" alt="" width="20" height="20">Infosys → a startup → eNTesla <span>· The origin story</span></h3>
+        <p>Started at Infosys, then left to build FreeMyCall.com with a friend (great website, flawed business model). Then went back to my electronics roots at eNTesla, an embedded startup, designing a medical audiometer from schematic to PCB to firmware.</p>
+        <p class="aside">Lesson learned: hardware is hard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Blast from the past</h2>
+    <p class="lede">Before the servers, there were soldering irons.</p>
+    <div class="collage">
+      <a class="tile" href="https://vimeo.com/1017538">
+        <img src="images/past/touch-table.jpg" alt="Multi-touch table" loading="lazy">
+        <span><b>Multi-touch table</b><i>2008 · inspired by Microsoft Surface &amp; Jeff Han, before touchscreens were cool</i></span>
+      </a>
+      <a class="tile" href="https://vimeo.com/12826549">
+        <img src="images/past/tshirt-printer.jpg" alt="DIY T-shirt printer" loading="lazy">
+        <span><b>T-shirt printer</b><i>2010 · built with my dad, lots of woodwork</i></span>
+      </a>
+      <a class="tile" href="https://vimeo.com/116242785">
+        <img src="images/past/illuminate.jpg" alt="Illuminate" loading="lazy">
+        <span><b>Illuminate</b><i>2011 · 555-timer wall art, won a door prize</i></span>
+      </a>
+      <a class="tile" href="https://vimeo.com/148812555">
+        <img src="images/past/pet-feeder.jpg" alt="Pet feeder" loading="lazy">
+        <span><b>Pet feeder</b><i>2015 · ESP8266 + MQTT, dinner over the internet</i></span>
+      </a>
+      <a class="tile" href="https://vimeo.com/185353851">
+        <img src="images/past/audio-fft.jpg" alt="Audio FFT" loading="lazy">
+        <span><b>Audio FFT</b><i>2016 · Cortex-M4 + FreeRTOS, music but as math</i></span>
+      </a>
+      <a class="tile" href="https://vimeo.com/231326907">
+        <img src="images/past/self-driving.jpg" alt="Self-driving car simulation" loading="lazy">
+        <span><b>Self-driving car</b><i>2017 · taught a simulated car to drive by watching me</i></span>
+      </a>
+    </div>
+    <p class="more">More on <a href="https://github.com/madhurjain?tab=repositories">GitHub</a>, including <a href="https://github.com/madhurjain/gopee">gopee</a> (a self-hosted proxy with 335★) — 59 repos and counting, some of them even finished.</p>
+  </section>
+
+  <section>
+    <h2>School</h2>
+    <div class="edu">
+      <div>
+        <span class="when">2015 — 2016</span>
+        <p><b>M.S. Computer Engineering</b>, New Jersey Institute of Technology <span class="aside">— 4.0 GPA, which I am contractually obligated to mention.</span></p>
+      </div>
+      <div>
+        <span class="when">2004 — 2008</span>
+        <p><b>B.E. Electronics</b>, Mumbai University <span class="aside">— where I learned chips run on magic smoke, and you must never let it out.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="y">2026</span> Madhur Jain</span>
+    <button id="theme" type="button">toggle theme</button>
+  </footer>
+
+</main>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  document.getElementById('theme').addEventListener('click', () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme
+      ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+  });
+  console.log('%cHey, fellow view-sourcer 👋', 'color:#d9480f;font-weight:600');
+</script>
+</body>
 </html>
