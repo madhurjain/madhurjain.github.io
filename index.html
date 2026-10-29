@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Madhur Jain</title>
-  <meta name="description" content="Engineer by day, builder by night. Building where software meets the physical world.">
+  <meta name="description" content="From soldering irons to distributed systems. Software engineer at Google, building with hardware, software and AI on nights and weekends.">
   <meta property="og:title" content="Madhur Jain">
-  <meta property="og:description" content="Engineer by day, builder by night. Building where software meets the physical world.">
+  <meta property="og:description" content="From soldering irons to distributed systems. Software engineer at Google, building with hardware, software and AI on nights and weekends.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
@@ -51,19 +51,23 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+      font: 16px/1.6 Geist, system-ui, -apple-system, sans-serif;
     }
     a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
     a:hover { color: var(--accent); }
-    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    ::selection { background: var(--accent); color: #fff; }
+    .mono { font-family: "Geist Mono", ui-monospace, monospace; }
 
     main { max-width: 760px; margin: 0 auto; padding: 72px 16px 48px; }
     section { margin-top: 72px; }
     h2 {
-      font: 500 13px/1 "JetBrains Mono", monospace;
+      display: inline-block;
+      font: 500 13px/1 "Geist Mono", monospace;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--bg);
+      background: var(--text);
+      padding: 6px 10px;
       margin: 0 0 24px;
     }
     h2::before { content: "// "; color: var(--accent); }
@@ -71,28 +75,29 @@
     /* Hero */
     .hero { display: flex; gap: 24px; align-items: center; }
     .hero img {
-      width: 88px; height: 88px; border-radius: 50%;
-      border: 2px solid var(--line); flex-shrink: 0;
+      width: 88px; height: 88px; object-fit: cover;
+      border: 2px solid var(--text); box-shadow: 4px 4px 0 var(--accent); flex-shrink: 0;
     }
-    h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.1; margin: 0 0 8px; letter-spacing: -.02em; }
+    h1 { font-size: clamp(36px, 7vw, 52px); font-weight: 700; line-height: 1; margin: 0 0 10px; letter-spacing: -.04em; }
     .tagline { font-size: 18px; color: var(--muted); margin: 0; }
     .intro { font-size: 18px; margin: 32px 0 0; max-width: 62ch; }
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
     .links a {
-      font: 500 14px/1 "JetBrains Mono", monospace;
+      font: 500 14px/1 "Geist Mono", monospace;
       text-decoration: none;
       padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
+      border: 2px solid var(--text);
       background: var(--surface);
+      box-shadow: 3px 3px 0 var(--text);
+      transition: transform .1s, box-shadow .1s;
     }
-    .links a:hover { border-color: var(--accent); }
+    .links a:hover { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--text); background: var(--accent-soft); }
 
 
     /* Experience */
     .job { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 20px 0; border-top: 1px solid var(--line); }
     .job:last-child { border-bottom: 1px solid var(--line); }
-    .when { font: 13px/1.7 "JetBrains Mono", monospace; color: var(--muted); }
+    .when { font: 13px/1.7 "Geist Mono", monospace; color: var(--muted); }
     .job h3 { margin: 0; font-size: 17px; }
     .job h3 span { font-weight: 400; color: var(--muted); }
     .logo {
@@ -106,13 +111,14 @@
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .card {
       display: block; text-decoration: none;
-      padding: 18px; border: 1px solid var(--line); border-radius: 10px;
+      padding: 18px; border: 2px solid var(--text);
       background: var(--surface);
-      transition: border-color .15s, transform .15s;
+      box-shadow: 4px 4px 0 var(--text);
+      transition: transform .12s, box-shadow .12s;
     }
-    a.card:hover { border-color: var(--accent); transform: translateY(-2px); color: inherit; }
+    a.card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--accent); color: inherit; }
     .card h3 { margin: 0 0 4px; font-size: 16px; display: flex; justify-content: space-between; gap: 8px; }
-    .card h3 small { font: 400 12px/1.8 "JetBrains Mono", monospace; color: var(--muted); white-space: nowrap; }
+    .card h3 small { font: 400 12px/1.8 "Geist Mono", monospace; color: var(--muted); white-space: nowrap; }
     .card p { margin: 0; font-size: 14px; color: var(--muted); }
     .more { margin-top: 16px; font-size: 14px; color: var(--muted); }
     .lede { margin: -8px 0 20px; color: var(--muted); }
@@ -125,7 +131,8 @@
     .collage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .tile {
       position: relative; display: block; overflow: hidden;
-      aspect-ratio: 4 / 3; border-radius: 10px; background: var(--chip);
+      aspect-ratio: 4 / 3; background: var(--chip);
+      border: 2px solid var(--text); box-shadow: 4px 4px 0 var(--text);
       text-decoration: none; color: #fff;
     }
     .tile:nth-child(odd) { transform: rotate(-.6deg); }
@@ -140,10 +147,10 @@
       display: flex; flex-direction: column; gap: 2px;
     }
     .tile b { font-size: 14px; }
-    .tile i { font: 11px/1.4 "JetBrains Mono", monospace; font-style: normal; opacity: .85; }
-    .tile:hover { color: #fff; transform: rotate(0) scale(1.02); z-index: 1; }
+    .tile i { font: 11px/1.4 "Geist Mono", monospace; font-style: normal; opacity: .85; }
+    .tile:hover { color: #fff; transform: rotate(0) scale(1.02); box-shadow: 6px 6px 0 var(--accent); z-index: 1; }
     .tile:hover img { transform: scale(1.06); filter: none; }
-    .tile { transition: transform .2s; }
+    .tile { transition: transform .2s, box-shadow .2s; }
 
     /* Education */
     .edu { display: grid; gap: 12px; }
@@ -151,9 +158,9 @@
     .edu p { margin: 0; }
 
     footer {
-      margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--line);
+      margin-top: 80px; padding-top: 24px; border-top: 2px solid var(--text);
       display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-      font: 13px/1.5 "JetBrains Mono", monospace; color: var(--muted);
+      font: 13px/1.5 "Geist Mono", monospace; color: var(--muted);
     }
     footer button {
       font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0;
@@ -177,13 +184,13 @@
       <img src="images/avatar.jpg" alt="Madhur Jain" width="88" height="88">
       <div>
         <h1>Madhur Jain</h1>
-        <p class="tagline">Engineer by day. Builder by night.</p>
+        <p class="tagline">From soldering irons to distributed systems.</p>
       </div>
     </div>
     <p class="intro">
-      I'm a software engineer at Google, working on YouTube Ads infrastructure. I've worked
-      across the stack (hardware, firmware and software), so if something's slow, I can usually
-      tell you which layer is lying. Lately I've been building where software meets the physical world:
+      I've been building things since before it was my job: two startups, dozens of side projects,
+      and plenty of ideas that didn't work out. By day, I'm a software engineer at Google, working
+      on YouTube Ads infrastructure. By night, I'm combining hardware, software and AI:
     </p>
     <div class="grid exploring-now">
       <div class="card quest-card">
@@ -206,44 +213,44 @@
     <h2>Where I've been</h2>
 
     <div class="job">
-      <div class="when">2022 — now</div>
+      <div class="when">2022 - now</div>
       <div>
         <h3><img class="logo" src="images/google-com-logo.png" alt="" width="20" height="20">Google <span>· Ad infrastructure &amp; privacy</span></h3>
-        <p>Building identity, personalization and compliance systems across AdMob and YouTube Ads — $500M+ ARR worth of systems that have to keep regulators, lawyers and advertisers happy at the same time.</p>
+        <p>Building identity, personalization and compliance systems across AdMob and YouTube Ads: millions of QPS, billions of dollars, and regulators, lawyers and advertisers who all need to stay happy at the same time.</p>
       </div>
     </div>
 
     <div class="job">
-      <div class="when">2020 — 2022</div>
+      <div class="when">2020 - 2022</div>
       <div>
         <h3><img class="logo" src="images/aws-com-logo.png" alt="" width="20" height="20">Amazon AWS <span>· IoT &amp; video</span></h3>
-        <p>Designed and built video ingestion for AWS IoT TwinMaker, piping live and recorded camera feeds into digital twins of industrial sites. Launched at <a href="https://youtu.be/fdBKRyhC9Yk?t=835">re:Invent 2021</a>.</p>
+        <p>Founding engineer on AWS IoT TwinMaker, a greenfield AWS service taken from blank page to launch. Designed and built its video pipeline, streaming live and recorded camera feeds from industrial sites into 3D digital twins. Launched at <a href="https://youtu.be/fdBKRyhC9Yk?t=835">re:Invent 2021</a>.</p>
       </div>
     </div>
 
     <div class="job">
-      <div class="when">2017 — 2020</div>
+      <div class="when">2017 - 2020</div>
       <div>
         <h3><img class="logo" src="images/sandiskstorage-com-logo.png" alt="" width="20" height="20">SanDisk <span>· SSD firmware &amp; systems</span></h3>
-        <p>Brought up the custom NVMe storage inside the Xbox Series X|S with Microsoft, and squeezed SSD power down so laptops last longer. Replaced a legacy LabVIEW test rig and cut validation from 8 hours to 2.</p>
+        <p>Brought up the custom NVMe storage inside the Xbox Series X|S with Microsoft, chased boot-critical bugs down to the PCIe bus, and squeezed SSD power down so laptops last longer.</p>
         <p class="aside">Those shorter Xbox load screens? You're welcome.</p>
       </div>
     </div>
 
     <div class="job">
-      <div class="when">2012 — 2015</div>
+      <div class="when">2012 - 2015</div>
       <div>
         <h3><img class="logo" src="images/pleximus-com-logo.png" alt="" width="20" height="20">Pleximus <span>· Co-Founder</span></h3>
-        <p>Bootstrapped a 10-person product shop serving clients across three continents. Built an industrial control product that talked to PLCs (0 → $100k ARR), a fleet-tracking SaaS, and a real-time packet filter.</p>
+        <p>Bootstrapped a 10-person company that built its own products and took on client work. Grew an industrial control product from zero to $100k ARR, and built a platform for tracking people and vehicle fleets in real time (think the live map behind Uber or DoorDash).</p>
         <p class="aside">Learned that the hardest protocol is the invoice.</p>
       </div>
     </div>
 
     <div class="job">
-      <div class="when">2008 — 2012</div>
+      <div class="when">2008 - 2012</div>
       <div>
         <h3><img class="logo" src="images/entesla-com-logo.png" alt="" width="20" height="20">Infosys → a startup → eNTesla <span>· The origin story</span></h3>
-        <p>Started at Infosys, then left to build FreeMyCall.com with a friend (great website, flawed business model). Then went back to my electronics roots at eNTesla, an embedded startup, designing a medical audiometer from schematic to PCB to firmware.</p>
+        <p>Started at Infosys, then left to co-found FreeMyCall.com: free calls anywhere in the world, paid for by watching ads. Then my childhood love for electronics landed me at eNTesla, an embedded startup, where I designed a medical audiometer (a hearing-test device) from schematic to PCB to firmware.</p>
         <p class="aside">Lesson learned: hardware is hard.</p>
       </div>
     </div>
@@ -278,19 +285,19 @@
         <span><b>Self-driving car</b><i>2017 · taught a simulated car to drive by watching me</i></span>
       </a>
     </div>
-    <p class="more">More on <a href="https://github.com/madhurjain?tab=repositories">GitHub</a>, including <a href="https://github.com/madhurjain/gopee">gopee</a> (a self-hosted proxy with 335★) — 59 repos and counting, some of them even finished.</p>
+    <p class="more">More on <a href="https://github.com/madhurjain?tab=repositories">GitHub</a>, including <a href="https://github.com/madhurjain/gopee">gopee</a> (a self-hosted proxy with 335★) - 59 repos and counting, some of them even finished.</p>
   </section>
 
   <section>
     <h2>School</h2>
     <div class="edu">
       <div>
-        <span class="when">2015 — 2016</span>
-        <p><b>M.S. Computer Engineering</b>, New Jersey Institute of Technology <span class="aside">— 4.0 GPA, which I am contractually obligated to mention.</span></p>
+        <span class="when">2015 - 2016</span>
+        <p><b>M.S. Computer Engineering</b>, New Jersey Institute of Technology <span class="aside">- a fresh start in a new country, with the same itch to build.</span></p>
       </div>
       <div>
-        <span class="when">2004 — 2008</span>
-        <p><b>B.E. Electronics</b>, Mumbai University <span class="aside">— where I learned chips run on magic smoke, and you must never let it out.</span></p>
+        <span class="when">2004 - 2008</span>
+        <p><b>B.E. Electronics</b>, Mumbai University <span class="aside">- where I learned chips run on magic smoke, and you must never let it out.</span></p>
       </div>
     </div>
   </section>
