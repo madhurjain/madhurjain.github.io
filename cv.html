@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Madhur Jain - CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #1c1b19;
+      --muted: #5f5b54;
+      --line: #d9d8d4;
+      --accent: #d9480f;
+    }
+
+    @page { size: letter; margin: 0.5in 0.6in; }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: #ecebe7;
+      color: var(--text);
+      font: 9.6pt/1.45 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 8.5in;
+      margin: 32px auto;
+      padding: 0.5in 0.6in;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(0,0,0,.12);
+    }
+
+    /* Header */
+    header { border-bottom: 2px solid var(--text); padding-bottom: 10px; }
+    h1 { font-size: 24pt; line-height: 1; letter-spacing: -.03em; margin: 0; font-weight: 700; }
+    .tagline { margin: 4px 0 8px; font-size: 11pt; color: var(--muted); }
+    .contact { display: flex; flex-wrap: wrap; gap: 3px 14px; font-size: 9pt; }
+    .contact a { border-bottom: 1px solid var(--accent); }
+
+    /* Sections */
+    section { margin-top: 14px; }
+    h2 {
+      font-size: 9pt; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin: 0 0 6px;
+      padding-bottom: 3px; border-bottom: 1px solid var(--line);
+    }
+    .summary { margin: 0; }
+
+    /* Roles */
+    .role { margin-top: 9px; break-inside: avoid; }
+    .role:first-of-type { margin-top: 0; }
+    .role-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .role-head h3 { margin: 0; font-size: 10.5pt; font-weight: 600; }
+    .role-head h3 span { font-weight: 400; color: var(--muted); }
+    .dates { font-size: 9pt; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .team { margin: 0; font-size: 9pt; color: var(--muted); }
+    ul { margin: 3px 0 0; padding-left: 16px; }
+    li { margin: 2px 0; }
+    li::marker { color: var(--accent); }
+    li a, .team a { border-bottom: 1px solid var(--accent); }
+
+    .early li b, .projects li b { font-weight: 600; }
+
+    /* Skills & education */
+    .rows { display: grid; grid-template-columns: 1.7in 1fr; gap: 3px 12px; }
+    .rows dt { font-weight: 600; }
+    .rows dd { margin: 0; }
+    .edu { display: flex; justify-content: space-between; gap: 12px; }
+    .edu + .edu { margin-top: 4px; }
+    .edu p { margin: 0; }
+
+    .print-btn {
+      position: fixed; right: 20px; bottom: 20px;
+      font: 600 13px/1 Inter, system-ui, sans-serif;
+      padding: 12px 16px; color: #fff; background: var(--text);
+      border: 0; box-shadow: 3px 3px 0 var(--accent); cursor: pointer;
+    }
+
+    @media screen and (max-width: 700px) {
+      .page { margin: 0; padding: 24px 16px; box-shadow: none; }
+      .role-head, .edu { flex-direction: column; gap: 0; }
+      .rows { grid-template-columns: 1fr; }
+      .rows dd { margin-bottom: 4px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; padding: 0; max-width: none; box-shadow: none; }
+      .print-btn { display: none; }
+      h2 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Madhur Jain</h1>
+    <p class="tagline">From soldering irons to distributed systems</p>
+    <div class="contact">
+      <span>San Jose, CA</span>
+      <a href="mailto:mformadhur@gmail.com">mformadhur@gmail.com</a>
+      <a href="https://madhurjain.com">madhurjain.com</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p class="summary">
+      Software engineer with 15+ years of experience across the whole stack, from PCB design and SSD firmware
+      to ad-serving systems handling millions of QPS at Google. Founding engineer on a new AWS service and
+      two-time startup co-founder. Outside work, I build AI and robotics systems for hardware-heavy domains.
+    </p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Google <span>· Senior Software Engineer</span></h3>
+        <span class="dates">Jan 2022 – Present</span>
+      </div>
+      <p class="team">Ad infrastructure &amp; privacy · AdMob, YouTube Ads</p>
+      <ul>
+        <li>Led cross-functional engineering across the AdMob ad-serving stack (millions of QPS), shipping user identity, ad personalization and regulatory compliance systems that support $500M+ in annual revenue.</li>
+        <li>Built core infrastructure for privacy-safe use of IP addresses in YouTube Ads personalization, balancing user privacy against monetization performance.</li>
+        <li>Led the architecture and cross-team rollout of mobile identity solutions, including iOS IDFV support, enabling privacy-compliant personalization across millions of devices.</li>
+        <li>Architected GDPR compliance infrastructure to meet Irish Data Protection Commission (DPC) requirements, partnering with Legal, Privacy, SDK and Ad Fraud teams to reduce regulatory exposure and protect revenue.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Amazon Web Services <span>· Software Engineer</span></h3>
+        <span class="dates">Dec 2020 – Jan 2022</span>
+      </div>
+      <p class="team">AWS IoT TwinMaker</p>
+      <ul>
+        <li>Founding engineer on AWS IoT TwinMaker, a new AWS service built from scratch and launched at <a href="https://youtu.be/fdBKRyhC9Yk?t=835">re:Invent 2021</a>.</li>
+        <li>Designed and built the service's video pipeline end to end, streaming live and recorded camera feeds from industrial sites into 3D digital twins for real-time monitoring and control.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>SanDisk <span>· Firmware &amp; Systems Design Engineer</span></h3>
+        <span class="dates">Feb 2017 – Dec 2020</span>
+      </div>
+      <ul>
+        <li>Worked with Microsoft to bring up the custom NVMe SSD storage in Xbox Series X|S, debugging boot-critical issues down to the PCIe bus.</li>
+        <li>Engineered SSD power management features that reduced power consumption and extended laptop battery life.</li>
+        <li>Cut SSD validation time by 75% (8 hours to 2) by rebuilding the test framework to automate thermal chambers, power supplies and bus analyzers, retiring legacy NI LabVIEW at sites worldwide.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Pleximus <span>· Co-Founder</span></h3>
+        <span class="dates">Jul 2012 – Nov 2015</span>
+      </div>
+      <ul>
+        <li>Bootstrapped a 10-person company that built its own products and delivered full-stack SaaS for clients across the US, Europe and Australia.</li>
+        <li>Took an industrial control product interfacing with PLCs from zero to $100k ARR.</li>
+        <li>Built a real-time location-tracking platform for monitoring vehicle and personnel fleets.</li>
+        <li>Developed NetPurified, a real-time TCP/IP traffic inspection and filtering tool using Aho-Corasick multi-pattern matching.</li>
+      </ul>
+    </div>
+
+    <div class="role early">
+      <div class="role-head">
+        <h3>Early Career <span>· Infosys, FreeMyCall.com, eNTesla</span></h3>
+        <span class="dates">2008 – 2012</span>
+      </div>
+      <ul>
+        <li><b>eNTesla</b> (embedded startup): designed a medical audiometer end to end, from schematic and PCB to firmware.</li>
+        <li><b>FreeMyCall.com</b> (co-founder): free calls anywhere in the world, paid for by watching ads.</li>
+        <li><b>Infosys</b>: started my career as a software engineer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><b>AI review of electrical drawings</b>: reads 100+ page electrical drawing sets, finds every breaker, feeder and transformer, and checks them against the National Electrical Code (NEC) before construction. Built with MCP tools and an eval suite.</li>
+      <li><b>Robot teleoperation</b>: low-latency vision and teleoperation that lets a remote operator take over when a robot gets stuck, with every intervention used to train it to need less help.</li>
+      <li><b><a href="https://github.com/madhurjain/gopee">gopee</a></b>: self-hosted web proxy, 335★ on GitHub.</li>
+      <li><b>Hardware builds</b>: multi-touch table, DIY T-shirt printer, ESP8266/MQTT pet feeder, Cortex-M4 + FreeRTOS audio FFT (<a href="https://vimeo.com/madj">vimeo.com/madj</a>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="rows">
+      <dt>Languages</dt>
+      <dd>C++, C, Go, Java, Python, TypeScript/JavaScript (Node.js, React)</dd>
+      <dt>Systems &amp; Infrastructure</dt>
+      <dd>Distributed systems, ad-serving infrastructure, Protobuf, PostgreSQL</dd>
+      <dt>Embedded &amp; Hardware</dt>
+      <dd>Firmware, NVMe, PCIe, ARM Cortex-M, FreeRTOS, ESP8266, MQTT, PCB design</dd>
+      <dt>AI</dt>
+      <dd>LLMs, RAG, LangGraph, MCP, evals</dd>
+      <dt>Edge AI &amp; Vision</dt>
+      <dd>llama.cpp, OpenCV</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu">
+      <p><b>M.S. Computer Engineering</b>, New Jersey Institute of Technology · GPA 4.0 / 4.0</p>
+      <span class="dates">2015 – 2016</span>
+    </div>
+    <div class="edu">
+      <p><b>B.E. Electronics</b>, Mumbai University</p>
+      <span class="dates">2004 – 2008</span>
+    </div>
+  </section>
+
+</div>
+<button class="print-btn" type="button" onclick="window.print()">Print / Save as PDF</button>
+</body>
+</html>
